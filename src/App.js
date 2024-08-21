@@ -19,7 +19,7 @@ const App = () => {
           <Sidebar />
           <div className="flex-1 justify-between flex flex-col">
             <Navbar />
-            <main className="p-6 h-full">
+            <main className="p-6 h-full bg-gray-100 pb-10">
               <Routes>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />

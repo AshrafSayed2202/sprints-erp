@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../contexts/AuthContext';
 
 const RegisterPage = () => {
@@ -30,7 +30,7 @@ const RegisterPage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center h-full">
             <div className="w-full max-w-md p-8 bg-white shadow-md rounded">
                 <h2 className="text-2xl font-bold mb-6">Register</h2>
                 <Formik
@@ -75,6 +75,9 @@ const RegisterPage = () => {
                         >
                             Register
                         </button>
+                        <p className='mt-4 text-sm text-gray-500'>
+                            Already have an accout? <Link to='/login' className='text-blue-700 underline font-semibold'> Login</Link>
+                        </p>
                     </Form>
                 </Formik>
             </div>

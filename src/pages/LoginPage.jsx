@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../contexts/AuthContext';
 
 const LoginPage = () => {
@@ -61,6 +61,9 @@ const LoginPage = () => {
                         >
                             Login
                         </button>
+                        <p className='mt-4 text-sm text-gray-500'>
+                            Don't have an accout yet? <Link to='/register' className='text-blue-700 underline font-semibold'> Register</Link>
+                        </p>
                     </Form>
                 </Formik>
             </div>
