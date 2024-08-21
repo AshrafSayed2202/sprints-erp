@@ -1,46 +1,69 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 import AuthContext from '../contexts/AuthContext';
 
 const LoginPage = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const { login } = useContext(AuthContext);
+    const { login } = React.useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Mock login function
-        login({ email });
+    const initialValues = {
+        email: '',
+        password: '',
+    };
+
+    const validationSchema = Yup.object({
+        email: Yup.string().email('Invalid email address').required('Required'),
+        password: Yup.string().min(6, 'Password must be at least 6 characters').required('Required'),
+    });
+
+    const handleSubmit = (values) => {
+        // Simulate authentication
+        const userData = { email: values.email }; // Replace with actual authentication logic
+        login(userData);
+        navigate('/dashboard');
     };
 
     return (
-        <div className="max-w-md mx-auto mt-10">
-            <h1 className="text-3xl font-bold mb-4">Login</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Email</label>
-                    <input
-                        type="email"
-                        className="w-full px-3 py-2 border rounded"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700">Password</label>
-                    <input
-                        type="password"
-                        className="w-full px-3 py-2 border rounded"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button
-                    type="submit"
-                    className="bg-primary text-white px-4 py-2 rounded"
+        <div className="flex justify-center items-center h-full">
+            <div className="w-full max-w-md p-8 bg-white shadow-md rounded">
+                <h2 className="text-2xl font-bold mb-6">Login</h2>
+                <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={handleSubmit}
                 >
-                    Login
-                </button>
-            </form>
+                    <Form>
+                        <div className="mb-4">
+                            <label htmlFor="email" className="block text-gray-700">Email</label>
+                            <Field
+                                type="email"
+                                id="email"
+                                name="email"
+                                className="w-full p-2 border border-gray-300 rounded"
+                            />
+                            <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="password" className="block text-gray-700">Password</label>
+                            <Field
+                                type="password"
+                                id="password"
+                                name="password"
+                                className="w-full p-2 border border-gray-300 rounded"
+                            />
+                            <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+                        >
+                            Login
+                        </button>
+                    </Form>
+                </Formik>
+            </div>
         </div>
     );
 };

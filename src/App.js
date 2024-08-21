@@ -10,7 +10,7 @@ import SalesPage from './pages/SalesPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProtectedRoute from './components/common/ProtectedRoute';
-import { AuthProvider } from './contexts/AuthContext'; // Import the AuthProvider
+import { AuthProvider } from './contexts/AuthContext';
 const App = () => {
   return (
     <AuthProvider>
@@ -19,7 +19,7 @@ const App = () => {
           <Sidebar />
           <div className="flex-1 justify-between flex flex-col">
             <Navbar />
-            <main className="p-6">
+            <main className="p-6 h-full">
               <Routes>
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
