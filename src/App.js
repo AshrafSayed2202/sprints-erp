@@ -1,12 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
-import { ERPProvider } from "./context/ERPContext";
-import Home from "./pages/Home";
-import InventoryManagement from "./pages/InventoryManagement";
-import FinanceManagement from "./pages/FinanceManagement";
-import SalesManagement from "./pages/SalesManagement";
-import LoginPage from "./pages/LoginPage";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { ERPProvider } from './context/ERPContext';
+import Home from './pages/Home';
+import InventoryManagement from './pages/InventoryManagement';
+import FinanceManagement from './pages/FinanceManagement';
+import SalesManagement from './pages/SalesManagement';
+import LoginPage from './pages/LoginPage';
 
 const App = () => {
   return (
