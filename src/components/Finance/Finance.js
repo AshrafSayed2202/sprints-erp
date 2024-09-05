@@ -1,7 +1,28 @@
 import React, { useContext } from 'react';
 import { ERPContext } from '../../context/ERPContext';
 import { Bar } from 'react-chartjs-2';
-
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
+// Register the necessary components
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
 const Finance = () => {
     const { state } = useContext(ERPContext);
 
