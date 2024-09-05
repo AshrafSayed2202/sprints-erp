@@ -7,12 +7,14 @@ import InventoryManagement from './pages/InventoryManagement';
 import FinanceManagement from './pages/FinanceManagement';
 import SalesManagement from './pages/SalesManagement';
 import LoginPage from './pages/LoginPage';
+import Navbar from './components/common/Navbar';  // Import the Navbar
 
 const App = () => {
   return (
     <AuthProvider>
       <ERPProvider>
         <Router>
+          <Navbar />  {/* Add Navbar here */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
