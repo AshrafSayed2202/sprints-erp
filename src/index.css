@@ -33,3 +33,28 @@ a {
 .container {
     @apply mx-auto px-4;
 }
+
+nav {
+    background-color: #2563eb;
+    /* Tailwind blue-600 */
+    padding: 1rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
