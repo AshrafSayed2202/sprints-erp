@@ -1,5 +1,5 @@
-import React from "react";
-import Inventory from "../components/Inventory/Inventory";
+import React from 'react';
+import Inventory from '../components/Inventory/Inventory';
 
 const InventoryManagement = () => {
     return (
