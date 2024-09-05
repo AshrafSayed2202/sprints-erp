@@ -1,39 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Sidebar from './components/common/Sidebar';
-import Navbar from './components/common/Navbar';
-import Footer from './components/common/Footer';
-import DashboardPage from './pages/DashboardPage';
-import InventoryPage from './pages/InventoryPage';
-import FinancePage from './pages/FinancePage';
-import SalesPage from './pages/SalesPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import ProtectedRoute from './components/common/ProtectedRoute';
-import { AuthProvider } from './contexts/AuthContext';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
+import { ERPProvider } from "./context/ERPContext";
+import Home from "./pages/Home";
+import InventoryManagement from "./pages/InventoryManagement";
+import FinanceManagement from "./pages/FinanceManagement";
+import SalesManagement from "./pages/SalesManagement";
+import LoginPage from "./pages/LoginPage";
+
 const App = () => {
   return (
     <AuthProvider>
-      <Router>
-        <div className="flex min-h-[100vh]">
-          <Sidebar />
-          <div className="flex-1 justify-between flex flex-col">
-            <Navbar />
-            <main className="p-6 h-full bg-gray-100 pb-10">
-              <Routes>
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/dashboard" element={<ProtectedRoute component={DashboardPage} />} />
-                <Route path="/inventory" element={<ProtectedRoute component={InventoryPage} />} />
-                <Route path="/finance" element={<ProtectedRoute component={FinancePage} />} />
-                <Route path="/sales" element={<ProtectedRoute component={SalesPage} />} />
-                <Route path="/" element={<DashboardPage />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </div>
-      </Router>
+      <ERPProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/inventory" element={<InventoryManagement />} />
+            <Route path="/finance" element={<FinanceManagement />} />
+            <Route path="/sales" element={<SalesManagement />} />
+          </Routes>
+        </Router>
+      </ERPProvider>
     </AuthProvider>
   );
 };
