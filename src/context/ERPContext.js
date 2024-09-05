@@ -25,7 +25,13 @@ const initialState = {
         { id: 9, productName: 'Smartwatch', quantity: 3, totalAmount: 750, customerName: 'Peter Parker' },
         { id: 10, productName: 'Camera', quantity: 1, totalAmount: 1200, customerName: 'Natasha Romanoff' },
     ],
-    financialRecords: [],
+    financialRecords: [
+        { id: 1, revenue: 12000, expenses: 5000, month: 'January' },
+        { id: 2, revenue: 15000, expenses: 7000, month: 'February' },
+        { id: 3, revenue: 17000, expenses: 6000, month: 'March' },
+        { id: 4, revenue: 20000, expenses: 9000, month: 'April' },
+        { id: 5, revenue: 25000, expenses: 11000, month: 'May' },
+    ],
 };
 
 export const ERPContext = createContext();
